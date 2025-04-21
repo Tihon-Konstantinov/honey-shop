@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медовый домик</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Медовый домик</h1>
+            <div class="cart-button" id="cart-button">
+                <span class="cart-count">0</span>
+                <span class="cart-total">0 ₽</span>
+            </div>
+        </header>
+
+        <!-- Страница категорий -->
+        <div class="categories-page" id="categories-page">
+            <div class="category-item" data-category="all">
+                <span>Все товары</span>
+            </div>
+            <div class="category-item" data-category="men">
+                <span>Мужские наборы</span>
+            </div>
+            <div class="category-item" data-category="women">
+                <span>Женские наборы</span>
+            </div>
+        </div>
+
+        <!-- Страница сортировки -->
+        <div class="sort-page" id="sort-page">
+            <div class="sort-item" data-sort="default">
+                <span>По умолчанию</span>
+            </div>
+            <div class="sort-item" data-sort="recommended">
+                <span>Рекомендуем</span>
+            </div>
+            <div class="sort-item" data-sort="new">
+                <span>Новинки</span>
+            </div>
+            <div class="sort-item" data-sort="price-asc">
+                <span>По возрастанию цены</span>
+            </div>
+            <div class="sort-item" data-sort="price-desc">
+                <span>По убыванию цены</span>
+            </div>
+        </div>
+
+        <!-- Каталог товаров -->
+        <div class="catalog-page" id="catalog-page">
+            <div class="products" id="products">
+                <!-- Продукты будут добавлены через JavaScript -->
+            </div>
+        </div>
+
+        <!-- Корзина -->
+        <div class="cart-modal" id="cart-modal">
+            <div class="cart-content">
+                <h2>Корзина</h2>
+                <div class="cart-items" id="cart-items">
+                    <!-- Товары в корзине будут добавлены через JavaScript -->
+                </div>
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span id="cart-total-amount">0 ₽</span>
+                </div>
+                <div class="cart-buttons">
+                    <button class="button secondary" id="continue-shopping">Продолжить покупки</button>
+                    <button class="button primary" id="checkout">Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Форма оформления заказа -->
+        <div class="checkout-form" id="checkout-form">
+            <h2>Оформление заказа</h2>
+            <form id="order-form">
+                <!-- Данные получателя -->
+                <div class="form-section">
+                    <h3>Получатель</h3>
+                    <div class="form-group">
+                        <input type="text" id="firstname" name="firstname" placeholder="Имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="lastname" name="lastname" placeholder="Фамилия" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="middlename" name="middlename" placeholder="Отчество" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Телефон" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <!-- Населенный пункт -->
+                <div class="form-section">
+                    <h3>Населенный пункт</h3>
+                    <div class="form-group">
+                        <input type="text" id="city" name="city" placeholder="Город" value="г Красноярск" required>
+                    </div>
+                </div>
+
+                <!-- Способ получения -->
+                <div class="form-section">
+                    <h3>Способ получения</h3>
+                    <div class="delivery-options">
+                        <label class="radio-label">
+                            <input type="radio" name="delivery" value="delivery" checked>
+                            <span class="radio-text">
+                                Доставка
+                                <span class="price">900 рублей</span>
+                                <span class="description">Сроки: По договоренности</span>
+                            </span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="delivery" value="pickup">
+                            <span class="radio-text">
+                                Самовывоз из магазина
+                                <span class="price">Бесплатно</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Адрес доставки -->
+                <div class="form-section" id="delivery-address">
+                    <h3>Адрес доставки</h3>
+                    <div class="form-group">
+                        <textarea id="address" name="address" placeholder="Введите адрес доставки" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Способ оплаты -->
+                <div class="form-section">
+                    <h3>Оплата</h3>
+                    <div class="payment-options">
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="cash" checked>
+                            <span class="radio-text">Оплата наличными</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="card">
+                            <span class="radio-text">Банковский перевод</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="online">
+                            <span class="radio-text">Безналичная оплата на счет ИП</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Итоговая сумма -->
+                <div class="order-total">
+                    <div class="total-row">
+                        <span>Общая стоимость:</span>
+                        <span id="subtotal">0 ₽</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Доставка:</span>
+                        <span id="delivery-cost">900 ₽</span>
+                    </div>
+                    <div class="total-row total-final">
+                        <span>Итого к оплате:</span>
+                        <span id="total-cost">0 ₽</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="button primary">Оформить заказ</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html> 
