@@ -9,28 +9,28 @@ def init_products():
                 "name": 'Набор "Вкусные моменты"',
                 "description": 'Весенний набор с мёдом и сладостями',
                 "price": 1200,
-                "image_url": 'https://example.com/images/product1.jpg',
+                "image_url": 'images/products/honey_set1.jpg',
                 "category": 'all'
             },
             {
                 "name": 'Набор "Сладкое желание"',
                 "description": 'Подарочный набор с мёдом и чаем',
                 "price": 1890,
-                "image_url": 'https://example.com/images/product2.jpg',
+                "image_url": 'images/products/honey_set2.jpg',
                 "category": 'women'
             },
             {
                 "name": 'Набор "Большой сюрприз"',
                 "description": 'Премиум набор с мёдом и деликатесами',
                 "price": 3670,
-                "image_url": 'https://example.com/images/product3.jpg',
+                "image_url": 'images/products/honey_set3.jpg',
                 "category": 'all'
             },
             {
                 "name": 'Набор "Карусель-1" с фруктами',
                 "description": 'Подарочный набор с мёдом и сухофруктами',
                 "price": 2540,
-                "image_url": 'https://example.com/images/product4.jpg',
+                "image_url": 'images/products/honey_set4.jpg',
                 "category": 'all'
             }
         ]
